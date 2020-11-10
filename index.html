@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+  <!-- PRS.html -->
+  <title>Paper Rock Scissors</title>
+  <meta charset = "UTF-8" />
+</head>
+<body>
+  <h1></h1>
+  <p>
+  </p>
+  <script>
+//Game start, set scores to 0.
+playerScore = 0;
+computerScore = 0;
+
+//Function that plays a single round: 
+function playRound(playerSelection,computerSelection) {
+
+    if (computerSelection === playerSelection) {
+      return "Draw ¯\\_(ツ)_/¯";
+    }
+
+    else if (computerSelection === "rock" && playerSelection === "paper") {
+      playerScore++;
+      return "You win!";
+    }
+
+    else if (computerSelection === "paper" && playerSelection === "scissors") {
+      playerScore++;
+      return "You win!";
+    }
+
+    else if (computerSelection === "scissors" && playerSelection === "rock") {
+      playerScore++;
+      return "You win!";
+    }
+
+    else if (computerSelection === "rock" && playerSelection === "scissors") {
+      computerScore++;
+      return "You lost :/";
+    }
+
+    else if (computerSelection === "paper" && playerSelection === "rock") {
+      computerScore++;
+      return "You lost :/";
+    }
+
+    else if (computerSelection === "scissors" && playerSelection === "paper") {
+      computerScore++;
+      return "You lost :/";
+    }
+
+    else {
+        return "Pls, choose paper, rock or scissors";
+    }
+  }
+
+//Function that plays a 5-round game: 
+function winner() {
+  if (playerScore > computerScore) {
+    return "Cheers mate! You beat me " + playerScore + " to " + computerScore;
+  } 
+
+  else if (playerScore < computerScore) {
+    return "Meh, I beat you " + computerScore + " to " + playerScore;
+  } 
+
+  else {
+    return "Wut? no winner nor loser? boooring!";
+  }
+}
+
+function game() {
+  for (i=0; i < 5; i++) {
+
+    //Get computer input: a function that randomly return a random element from an array.
+    const arr = ["paper", "rock","scissors"];
+
+    function computerPlay(arr) {
+      return arr[Math.floor(Math.random()*arr.length)];
+    }
+
+    const computerSelection = computerPlay(arr);
+
+    //Get user input.
+    const userInput = prompt("Paper, rock or scissors?");
+    const playerSelection = userInput.toLowerCase();
+
+    alert(playRound(playerSelection,computerSelection));
+  }
+  return winner();
+}
+
+alert(game());
+  </script>
+</body>
+</html>
